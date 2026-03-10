@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- simple running cartoon character -->
+  <!-- head -->
+  <circle cx="100" cy="60" r="30" fill="#ffd4a3"/>
+  <!-- hair -->
+  <path d="M70 60 Q100 20 130 60" fill="#333"/>
+  <!-- body -->
+  <rect x="90" y="90" width="20" height="50" fill="#4ade80" rx="10"/>
+  <!-- left arm -->
+  <path d="M90 100 L60 120" stroke="#4ade80" stroke-width="10" stroke-linecap="round"/>
+  <!-- right arm -->
+  <path d="M110 100 L140 120" stroke="#4ade80" stroke-width="10" stroke-linecap="round"/>
+  <!-- left leg -->
+  <path d="M95 140 L75 180" stroke="#60a5fa" stroke-width="12" stroke-linecap="round"/>
+  <!-- right leg -->
+  <path d="M105 140 L125 180" stroke="#60a5fa" stroke-width="12" stroke-linecap="round"/>
+  <!-- face features -->
+  <circle cx="90" cy="55" r="4" fill="#000"/>
+  <circle cx="110" cy="55" r="4" fill="#000"/>
+  <path d="M90 70 Q100 80 110 70" stroke="#000" stroke-width="3" fill="none"/>
+</svg>
