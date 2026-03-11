@@ -2,15 +2,32 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("register", { name, email, password });
+    try {
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        alert("Registration successful! Please log in.");
+        router.push("/login");
+      } else {
+        alert(data.error || "Registration failed");
+      }
+    } catch (error) {
+      alert("Network error. Please try again.");
+    }
   };
 
   return (

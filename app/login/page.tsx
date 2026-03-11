@@ -2,15 +2,31 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // stub: perform authentication
-    console.log("login", { email, password });
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        alert("Login successful!");
+        router.push("/");
+      } else {
+        alert(data.error || "Login failed");
+      }
+    } catch (error) {
+      alert("Network error. Please try again.");
+    }
   };
 
   return (
