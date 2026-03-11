@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { findUserByEmail } from "@/lib/users";
+import { saveSession } from "@/lib/actions";
 
 export async function POST(req: NextRequest) {
   try {
@@ -26,6 +27,9 @@ export async function POST(req: NextRequest) {
         { status: 401 }
       );
     }
+
+    // Save session to file
+    await saveSession({ id: user.id, name: user.name, email: user.email });
 
     return NextResponse.json(
       { message: "Login successful", user: { id: user.id, name: user.name, email: user.email } },

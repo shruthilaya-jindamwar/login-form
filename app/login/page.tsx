@@ -20,7 +20,7 @@ export default function Login() {
       const data = await res.json();
       if (res.ok) {
         alert("Login successful!");
-        router.push("/");
+        router.push("/dashboard");
       } else {
         alert(data.error || "Login failed");
       }
